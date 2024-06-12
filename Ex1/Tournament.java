@@ -40,10 +40,10 @@ public class Tournament {
             Game game = new Game(players[xInd], players[oInd], size, winStreak, this.renderer);
             Mark win = game.run();
             switch (win) {
-                case Mark.X:
+                case X:
                     scoreTable[xInd]++;
                     break;
-                case Mark.O:
+                case O:
                     scoreTable[oInd]++;
                     break;
                 default:
