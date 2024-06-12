@@ -16,8 +16,9 @@ public class HumanPlayer implements Player {
     /**
      * This method will play the turn for the player.
      * The player will play by taking input from the user.
+     *
      * @param board the board to play on
-     * @param mark the mark to play
+     * @param mark  the mark to play
      */
     public void playTurn(Board board, Mark mark) {
 
@@ -26,9 +27,9 @@ public class HumanPlayer implements Player {
             int rowColumn = KeyboardInput.readInt();
             int row = rowColumn / 10;
             int column = rowColumn % 10;
-            
+
             if (inBoard(board, row, column) && isCellEmpty(board, row, column)) {
-                board.putMark(row, column, mark);
+                board.putMark(mark, row, column);
                 break;
             }
             if (!inBoard(board, row, column)) {

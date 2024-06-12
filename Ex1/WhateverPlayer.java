@@ -28,6 +28,6 @@ public class WhateverPlayer implements Player {
             row = random.nextInt(size);
             column = random.nextInt(size);
         }
-        board.putMark(row, column, mark);
+        board.putMark( mark,row, column);
     }
 }   

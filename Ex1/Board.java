@@ -28,16 +28,16 @@ public class Board {
     /**
      * Put a mark on the board
      *
-     * @param x    row index
-     * @param y    column index
+     * @param row    row index
+     * @param col    column index
      * @param mark the mark to put
      * @return true if the mark is put successfully, false otherwise
      */
-    public boolean putMark(int x, int y, Mark mark) {
-        if (x < 0 || x >= size || y < 0 || y >= size || board[x][y] != Mark.BLANK) {
+    public boolean putMark( Mark mark,int row, int col) {
+        if (row < 0 || row >= size || col < 0 || col >= size || board[row][col] != Mark.BLANK) {
             return false;
         }
-        board[x][y] = mark;
+        board[row][col] = mark;
         return true;
     }
 

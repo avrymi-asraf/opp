@@ -13,16 +13,17 @@ public class GeniusPlayer implements Player {
     /**
      * This method will play the turn for the player.
      * The player will play from top to bottom from random column.
+     *
      * @param board the board to play on
-     * @param mark the mark to play
+     * @param mark  the mark to play
      */
     @Override
     public void playTurn(Board board, Mark mark) {
         int row = 0;
-        int col = random.nextInt(1,board.getSize());
+        int col = random.nextInt(1, board.getSize());
         while (true) {
             if (board.getMark(row, col) == Mark.BLANK) {
-                board.putMark(row, col, mark);
+                board.putMark(mark, row, col);
                 return;
             }
             row = (row + 1) % board.getSize();
