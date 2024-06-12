@@ -7,31 +7,33 @@ public class Tournament {
     private final int rounds;
     private final Player[] players;
     private final Renderer renderer;
-    
+
     /**
      * Constructor for the Tournament class.
-     * @param rounds the number of rounds to play
+     *
+     * @param rounds   the number of rounds to play
      * @param renderer the renderer to use
-     * @param player1 
+     * @param player1
      * @param player2
      */
     public Tournament(int rounds, Renderer renderer, Player player1, Player player2) {
         this.rounds = rounds;
-        scoreTable = new int[] { 0, 0, 0 };
-        players = new Player[] { player1, player2 };
+        scoreTable = new int[]{0, 0, 0};
+        players = new Player[]{player1, player2};
         this.renderer = renderer;
 
     }
 
     /**
      * This method will play the tournament between two players.
-     * @param size the size of the board
-     * @param winStreak the number of marks in a row to win
+     *
+     * @param size        the size of the board
+     * @param winStreak   the number of marks in a row to win
      * @param playerName1 the name of the first player
      * @param playerName2 the name of the second player
      */
     public void playTournament(int size, int winStreak,
-            String playerName1, String playerName2) {
+                               String playerName1, String playerName2) {
         int xInd = 0;
         int oInd = 1;
         for (int i = 1; i <= rounds; i++) {
@@ -54,29 +56,30 @@ public class Tournament {
         }
         System.out.printf(
                 """
-                        ######### Results #########
-                        Player 1, %s won: %d rounds
-                        Player 2, %s won: %d rounds
-                        Ties: %d""", playerName1, scoreTable[0], playerName2, scoreTable[1],
+                ######### Results #########
+                Player 1, %s won: %d rounds
+                Player 2, %s won: %d rounds
+                Ties: %d""", playerName1, scoreTable[0], playerName2, scoreTable[1],
                 scoreTable[2]);
     }
 
     private static void printUsage() {
         System.out.println("""
-                Usage: Please run the game again: java Tournament [round count] [size] [win_streak]
-                [render target: console/none] [first player: human/whatever/clever/genius] [second
-                player: human/whatever/clever/genius]
-                                                """);
+       Usage: Please run the game again: java Tournament [round count] [size] [win_streak]
+       [render target: console/none] [first player: human/whatever/clever/genius] [second
+       player: human/whatever/clever/genius]""");
     }
 
     public static void main(String[] args) {
         if (args.length != 7) {
-            throw new IllegalArgumentException("Invalid number of arguments. Expected 7, got " + args.length);
+            throw new IllegalArgumentException(
+                    "Invalid number of arguments. Expected 7, got " + args.length);
         }
 
         int roundCount = Integer.parseInt(args[1]);
         if (roundCount < 1) {
-            throw new IllegalArgumentException("Invalid number of rounds. Expected a positive integer, got " + args[1]);
+            throw new IllegalArgumentException(
+                    "Invalid number of rounds. Expected a positive integer, got " + args[1]);
         }
 
         int size = Integer.parseInt(args[2]);
@@ -88,7 +91,10 @@ public class Tournament {
         int winStreak = Integer.parseInt(args[3]);
         if (winStreak < 2 || winStreak > size) {
             throw new IllegalArgumentException(
-                    "Invalid win streak. Expected an integer between 2 and " + size + ", got " + args[3]);
+                    "Invalid win streak. Expected an integer between 2 and " +
+                    size +
+                    ", got " +
+                    args[3]);
         }
 
         RendererFactory rendererFactory = new RendererFactory();
